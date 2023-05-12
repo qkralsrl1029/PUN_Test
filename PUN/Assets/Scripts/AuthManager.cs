@@ -20,9 +20,11 @@ public class AuthManager : MonoBehaviour
     public static FirebaseAuth firebaseAuth;
 
     public static FirebaseUser firebaseUser;
+    public static string userId;
 
     void Start()
     {
+
         signInButton.interactable = false;
 
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task=>
@@ -64,6 +66,8 @@ public class AuthManager : MonoBehaviour
             else
             {
                 firebaseUser = task.Result.User;
+                userId = string.Copy(firebaseUser.Email);
+                
                 Debug.Log("Success! : " + firebaseUser.Email);
                 SceneManager.LoadScene("LobbyScene");
             }
