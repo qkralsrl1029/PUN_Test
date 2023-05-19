@@ -26,7 +26,7 @@ public class Ball : MonoBehaviourPun
             var goalPost = hit.collider.GetComponent<Goalpost>();
             if (goalPost != null)
             {
-                //GameManager.instance.AddScore();
+                GameManager.Instance.AddScore(goalPost.playrNum,1);
             }
 
             dir = Vector2.Reflect(dir, hit.normal);
