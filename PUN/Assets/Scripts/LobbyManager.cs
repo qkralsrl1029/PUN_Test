@@ -10,11 +10,13 @@ public class LobbyManager : MonoBehaviour
 
     void Start()
     {
-        if (AuthManager.firebaseUser != null)
-            nameTxt.text = AuthManager.userId;
-
-        Debug.Log(AuthManager.firebaseUser.Email);
-    }
-
-    
+        try
+        {
+            if (AuthManager.firebaseUser != null)
+                nameTxt.text = AuthManager.userId;
+        }catch( UnityException e)
+        {
+            Debug.Log(e.ToString());
+        }
+    }   
 }
